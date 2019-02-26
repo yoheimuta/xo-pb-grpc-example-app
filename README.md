@@ -11,3 +11,9 @@ export GOPATH=$(pwd)
 go get -d github.com/yoheimuta/xo-example-app # ignore a `no Go files` error.
 cd src/github.com/yoheimuta/xo-example-app
 ```
+
+Install a dependency.
+
+```
+go get -u github.com/xo/xo
+```
