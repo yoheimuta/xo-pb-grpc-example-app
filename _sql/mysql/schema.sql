@@ -1,3 +1,6 @@
+CREATE DATABASE IF NOT EXISTS `test-xo-db`;
+USE `test-xo-db`
+
 CREATE TABLE users (
   user_id integer NOT NULL AUTO_INCREMENT PRIMARY KEY
 ) ENGINE=InnoDB;
