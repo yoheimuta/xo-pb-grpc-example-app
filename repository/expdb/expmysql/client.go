@@ -2,11 +2,13 @@ package expmysql
 
 import (
 	"database/sql"
+
+	"github.com/yoheimuta/xo-example-app/infra/expsql"
 )
 
 // Client represents a MySQL client.
 type Client struct {
-	db *sql.DB
+	db *expsql.DB
 }
 
 // NewClient creates a new Client.
@@ -18,7 +20,7 @@ func NewClient(
 		return nil, err
 	}
 	return &Client{
-		db: db,
+		db: expsql.NewDB(db),
 	}, nil
 }
 
