@@ -29,7 +29,7 @@ func NewDep() (*Dep, error) {
 	dataSource := expfixture_test.NewDataSource(
 		"root",
 		"my-pw",
-		"0.0.0.0",
+		"127.0.0.1",
 	)
 	dataSourceName, err := dataSource.Setup()
 	if err != nil {

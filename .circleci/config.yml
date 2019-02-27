@@ -11,17 +11,22 @@ jobs:
   test:
     docker:
       - image: circleci/golang:1.11.4
+      - image: circleci/mysql:8.0
+        environment:
+          - MYSQL_ROOT_PASSWORD=my-pw
+        command: mysqld --default-authentication-plugin=mysql_native_password
     working_directory: /go/src/github.com/yoheimuta/xo-example-app
     steps:
       - checkout
-      - setup_remote_docker
       - run:
-          name: "setup"
+          name: Setup
           command: |
             sudo apt install mysql-client
-            docker run --name test-mysql --rm -d -e MYSQL_ROOT_PASSWORD=my-pw -p 3306:3306 mysql:8.0.0
       - run:
-          name: "test"
+          name: Wait for DB
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 10s
+      - run:
+          name: Run tests
           command: |
             make dev/test
 workflows:
