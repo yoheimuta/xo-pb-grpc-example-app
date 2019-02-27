@@ -18,6 +18,7 @@ jobs:
       - run:
           name: "setup"
           command: |
+            sudo apt install mysql-client
             docker run --name test-mysql --rm -d -e MYSQL_ROOT_PASSWORD=my-pw -p 3306:3306 mysql:8.0.0
       - run:
           name: "test"
