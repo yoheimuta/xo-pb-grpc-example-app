@@ -15,6 +15,10 @@ dev/fmt:
 dev/test:
 	go test -v -p 8 -count 1 -timeout 240s -race ./...
 
+## dev/install/dep installs dependencies.
+dev/install/dep:
+	./_script/install_dep.sh
+
 ## dev/add/gopkg vendors the library specified by a GOPKG variable.
 dev/add/gopkg:
 	dep ensure -add $(GOPKG)
