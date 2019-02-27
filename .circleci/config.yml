@@ -14,6 +14,7 @@ jobs:
     working_directory: /go/src/github.com/yoheimuta/xo-example-app
     steps:
       - checkout
+      - setup_remote_docker
       - run:
           name: "setup"
           command: |
