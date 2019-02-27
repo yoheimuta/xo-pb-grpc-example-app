@@ -149,7 +149,9 @@ func UserProductsByUserID(db XODB, userID string) ([]*UserProduct, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer q.Close()
+	defer func() {
+		_ = q.Close()
+	}()
 
 	// load results
 	res := []*UserProduct{}
@@ -188,7 +190,9 @@ func UserProductsByTitle(db XODB, title string) ([]*UserProduct, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer q.Close()
+	defer func() {
+		_ = q.Close()
+	}()
 
 	// load results
 	res := []*UserProduct{}

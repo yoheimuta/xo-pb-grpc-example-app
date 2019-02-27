@@ -27,7 +27,9 @@ func {{ .Name }} (db XODB{{ range .QueryParams }}, {{ .Name }} {{ .Type }}{{ end
 	if err != nil {
 		return nil, err
 	}
-	defer q.Close()
+	defer func() {
+		_ = q.Close()
+	}()
 
 	// load results
 	res := []*{{ .Type.Name }}{}

@@ -32,7 +32,9 @@ func {{ .FuncName }}(db XODB{{ goparamlist .Fields true true }}) ({{ if not .Ind
 	if err != nil {
 		return nil, err
 	}
-	defer q.Close()
+	defer func() {
+		_ = q.Close()
+	}()
 
 	// load results
 	res := []*{{ .Type.Name }}{}
