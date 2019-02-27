@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-// UserAuth represents a row from 'user_auths'.
+// UserAuth represents a row from 'test-xo-db.user_auths'.
 type UserAuth struct {
 	UserID       string    `json:"user_id"`       // user_id
 	Email        string    `json:"email"`         // email
@@ -40,7 +40,7 @@ func (ua *UserAuth) Insert(db XODB) error {
 	}
 
 	// sql insert query, primary key must be provided
-	const sqlstr = `INSERT INTO user_auths (` +
+	const sqlstr = `INSERT INTO test-xo-db.user_auths (` +
 		`user_id, email, password_hash, created_at, updated_at` +
 		`) VALUES (` +
 		`?, ?, ?, ?, ?` +
@@ -74,7 +74,7 @@ func (ua *UserAuth) Update(db XODB) error {
 	}
 
 	// sql query
-	const sqlstr = `UPDATE user_auths SET ` +
+	const sqlstr = `UPDATE test-xo-db.user_auths SET ` +
 		`email = ?, password_hash = ?, created_at = ?, updated_at = ?` +
 		` WHERE user_id = ?`
 
@@ -108,7 +108,7 @@ func (ua *UserAuth) Delete(db XODB) error {
 	}
 
 	// sql query
-	const sqlstr = `DELETE FROM user_auths WHERE user_id = ?`
+	const sqlstr = `DELETE FROM test-xo-db.user_auths WHERE user_id = ?`
 
 	// run query
 	XOLog(sqlstr, ua.UserID)
@@ -130,7 +130,7 @@ func (ua *UserAuth) User(db XODB) (*User, error) {
 	return UserByUserID(db, ua.UserID)
 }
 
-// UserAuthByEmail retrieves a row from 'user_auths' as a UserAuth.
+// UserAuthByEmail retrieves a row from 'test-xo-db.user_auths' as a UserAuth.
 //
 // Generated from index 'user_auths_email_unique_idx'.
 func UserAuthByEmail(db XODB, email string) (*UserAuth, error) {
@@ -139,7 +139,7 @@ func UserAuthByEmail(db XODB, email string) (*UserAuth, error) {
 	// sql query
 	const sqlstr = `SELECT ` +
 		`user_id, email, password_hash, created_at, updated_at ` +
-		`FROM user_auths ` +
+		`FROM test-xo-db.user_auths ` +
 		`WHERE email = ?`
 
 	// run query
@@ -156,7 +156,7 @@ func UserAuthByEmail(db XODB, email string) (*UserAuth, error) {
 	return &ua, nil
 }
 
-// UserAuthByUserID retrieves a row from 'user_auths' as a UserAuth.
+// UserAuthByUserID retrieves a row from 'test-xo-db.user_auths' as a UserAuth.
 //
 // Generated from index 'user_auths_user_id_pkey'.
 func UserAuthByUserID(db XODB, userID string) (*UserAuth, error) {
@@ -165,7 +165,7 @@ func UserAuthByUserID(db XODB, userID string) (*UserAuth, error) {
 	// sql query
 	const sqlstr = `SELECT ` +
 		`user_id, email, password_hash, created_at, updated_at ` +
-		`FROM user_auths ` +
+		`FROM test-xo-db.user_auths ` +
 		`WHERE user_id = ?`
 
 	// run query

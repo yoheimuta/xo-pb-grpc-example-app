@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-// User represents a row from 'users'.
+// User represents a row from 'test-xo-db.users'.
 type User struct {
 	UserID    string    `json:"user_id"`    // user_id
 	CreatedAt time.Time `json:"created_at"` // created_at
@@ -38,7 +38,7 @@ func (u *User) Insert(db XODB) error {
 	}
 
 	// sql insert query, primary key must be provided
-	const sqlstr = `INSERT INTO users (` +
+	const sqlstr = `INSERT INTO test-xo-db.users (` +
 		`user_id, created_at, updated_at` +
 		`) VALUES (` +
 		`?, ?, ?` +
@@ -72,7 +72,7 @@ func (u *User) Update(db XODB) error {
 	}
 
 	// sql query
-	const sqlstr = `UPDATE users SET ` +
+	const sqlstr = `UPDATE test-xo-db.users SET ` +
 		`created_at = ?, updated_at = ?` +
 		` WHERE user_id = ?`
 
@@ -106,7 +106,7 @@ func (u *User) Delete(db XODB) error {
 	}
 
 	// sql query
-	const sqlstr = `DELETE FROM users WHERE user_id = ?`
+	const sqlstr = `DELETE FROM test-xo-db.users WHERE user_id = ?`
 
 	// run query
 	XOLog(sqlstr, u.UserID)
@@ -121,7 +121,7 @@ func (u *User) Delete(db XODB) error {
 	return nil
 }
 
-// UserByUserID retrieves a row from 'users' as a User.
+// UserByUserID retrieves a row from 'test-xo-db.users' as a User.
 //
 // Generated from index 'users_user_id_pkey'.
 func UserByUserID(db XODB, userID string) (*User, error) {
@@ -130,7 +130,7 @@ func UserByUserID(db XODB, userID string) (*User, error) {
 	// sql query
 	const sqlstr = `SELECT ` +
 		`user_id, created_at, updated_at ` +
-		`FROM users ` +
+		`FROM test-xo-db.users ` +
 		`WHERE user_id = ?`
 
 	// run query
