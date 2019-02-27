@@ -19,6 +19,13 @@ dev/test:
 dev/add/gopkg:
 	dep ensure -add $(GOPKG)
 
+## dev/gen/xo generates xo models.
+dev/gen/xo:
+	xo 'mysql://root:my-pw@0.0.0.0/test-xo-db' \
+	    -o infra/expmysql/expmodels \
+	    --template-path _xo/templates
+	sed -i "" -e"s/test-xo-db\.//g" infra/expmysql/expmodels/*
+
 # ------------------------------------------------------------------
 # ------------------------------------------------------------------
 # }

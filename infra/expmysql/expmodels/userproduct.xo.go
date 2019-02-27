@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-// UserProduct represents a row from 'test-xo-db.user_products'.
+// UserProduct represents a row from 'user_products'.
 type UserProduct struct {
 	UserProductID string    `json:"user_product_id"` // user_product_id
 	UserID        string    `json:"user_id"`         // user_id
@@ -41,7 +41,7 @@ func (up *UserProduct) Insert(db XODB) error {
 	}
 
 	// sql insert query, primary key must be provided
-	const sqlstr = `INSERT INTO test-xo-db.user_products (` +
+	const sqlstr = `INSERT INTO user_products (` +
 		`user_product_id, user_id, title, description, created_at, updated_at` +
 		`) VALUES (` +
 		`?, ?, ?, ?, ?, ?` +
@@ -75,7 +75,7 @@ func (up *UserProduct) Update(db XODB) error {
 	}
 
 	// sql query
-	const sqlstr = `UPDATE test-xo-db.user_products SET ` +
+	const sqlstr = `UPDATE user_products SET ` +
 		`user_id = ?, title = ?, description = ?, created_at = ?, updated_at = ?` +
 		` WHERE user_product_id = ?`
 
@@ -109,7 +109,7 @@ func (up *UserProduct) Delete(db XODB) error {
 	}
 
 	// sql query
-	const sqlstr = `DELETE FROM test-xo-db.user_products WHERE user_product_id = ?`
+	const sqlstr = `DELETE FROM user_products WHERE user_product_id = ?`
 
 	// run query
 	XOLog(sqlstr, up.UserProductID)
@@ -131,7 +131,7 @@ func (up *UserProduct) User(db XODB) (*User, error) {
 	return UserByUserID(db, up.UserID)
 }
 
-// UserProductsByUserID retrieves a row from 'test-xo-db.user_products' as a UserProduct.
+// UserProductsByUserID retrieves a row from 'user_products' as a UserProduct.
 //
 // Generated from index 'user_id'.
 func UserProductsByUserID(db XODB, userID string) ([]*UserProduct, error) {
@@ -140,7 +140,7 @@ func UserProductsByUserID(db XODB, userID string) ([]*UserProduct, error) {
 	// sql query
 	const sqlstr = `SELECT ` +
 		`user_product_id, user_id, title, description, created_at, updated_at ` +
-		`FROM test-xo-db.user_products ` +
+		`FROM user_products ` +
 		`WHERE user_id = ?`
 
 	// run query
@@ -170,7 +170,7 @@ func UserProductsByUserID(db XODB, userID string) ([]*UserProduct, error) {
 	return res, nil
 }
 
-// UserProductsByTitle retrieves a row from 'test-xo-db.user_products' as a UserProduct.
+// UserProductsByTitle retrieves a row from 'user_products' as a UserProduct.
 //
 // Generated from index 'user_products_title_idx'.
 func UserProductsByTitle(db XODB, title string) ([]*UserProduct, error) {
@@ -179,7 +179,7 @@ func UserProductsByTitle(db XODB, title string) ([]*UserProduct, error) {
 	// sql query
 	const sqlstr = `SELECT ` +
 		`user_product_id, user_id, title, description, created_at, updated_at ` +
-		`FROM test-xo-db.user_products ` +
+		`FROM user_products ` +
 		`WHERE title = ?`
 
 	// run query
@@ -209,7 +209,7 @@ func UserProductsByTitle(db XODB, title string) ([]*UserProduct, error) {
 	return res, nil
 }
 
-// UserProductByUserProductID retrieves a row from 'test-xo-db.user_products' as a UserProduct.
+// UserProductByUserProductID retrieves a row from 'user_products' as a UserProduct.
 //
 // Generated from index 'user_products_user_product_id_pkey'.
 func UserProductByUserProductID(db XODB, userProductID string) (*UserProduct, error) {
@@ -218,7 +218,7 @@ func UserProductByUserProductID(db XODB, userProductID string) (*UserProduct, er
 	// sql query
 	const sqlstr = `SELECT ` +
 		`user_product_id, user_id, title, description, created_at, updated_at ` +
-		`FROM test-xo-db.user_products ` +
+		`FROM user_products ` +
 		`WHERE user_product_id = ?`
 
 	// run query

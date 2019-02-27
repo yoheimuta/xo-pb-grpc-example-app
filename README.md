@@ -35,7 +35,5 @@ mysql -uroot -p'my-pw' -h 0.0.0.0 < _sql/mysql/schema.sql
 Update generated model code.
 
 ```bash
-xo 'mysql://root:my-pw@0.0.0.0/test-xo-db' \
-    -o infra/expmysql/expmodels \
-    --template-path _xo/templates
+make dev/gen/xo
 ```
