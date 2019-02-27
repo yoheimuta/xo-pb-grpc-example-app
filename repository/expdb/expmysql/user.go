@@ -9,17 +9,17 @@ import (
 
 // RegisterUser registers a user.
 func (c *Client) RegisterUser(
-	_ context.Context,
+	ctx context.Context,
 	user *expmodels.User,
 	auth *expmodels.UserAuth,
 ) error {
 	return c.db.WithTx(func(tx expsql.Tx) error {
-		err := user.Insert(tx)
+		err := user.Insert(ctx, tx)
 		if err != nil {
 			return err
 		}
 
-		err = auth.Insert(tx)
+		err = auth.Insert(ctx, tx)
 		if err != nil {
 			return err
 		}

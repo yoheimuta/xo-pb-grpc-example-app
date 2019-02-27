@@ -57,7 +57,8 @@ func TestApp_RegisterUser(t *testing.T) {
 				return
 			}
 
-			gotUser, err := expmodels.UserByUserID(dep.RawDB(), test.inputReq.User.UserID)
+			ctx := context.Background()
+			gotUser, err := expmodels.UserByUserID(ctx, dep.RawDB(), test.inputReq.User.UserID)
 			if err != nil {
 				t.Errorf("got err %v", err)
 			}
@@ -65,7 +66,7 @@ func TestApp_RegisterUser(t *testing.T) {
 				t.Errorf("got %v, but want %v", gotUser, test.inputReq.User)
 			}
 
-			gotAuth, err := expmodels.UserAuthByUserID(dep.RawDB(), test.inputReq.User.UserID)
+			gotAuth, err := expmodels.UserAuthByUserID(ctx, dep.RawDB(), test.inputReq.User.UserID)
 			if err != nil {
 				t.Errorf("got err %v", err)
 			}

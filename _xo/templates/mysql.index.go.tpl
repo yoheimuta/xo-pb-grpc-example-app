@@ -3,7 +3,7 @@
 // {{ .FuncName }} retrieves a row from '{{ $table }}' as a {{ .Type.Name }}.
 //
 // Generated from index '{{ .Index.IndexName }}'.
-func {{ .FuncName }}(db XODB{{ goparamlist .Fields true true }}) ({{ if not .Index.IsUnique }}[]{{ end }}*{{ .Type.Name }}, error) {
+func {{ .FuncName }}(ctx context.Context, db XODB{{ goparamlist .Fields true true }}) ({{ if not .Index.IsUnique }}[]{{ end }}*{{ .Type.Name }}, error) {
 	var err error
 
 	// sql query
@@ -21,14 +21,14 @@ func {{ .FuncName }}(db XODB{{ goparamlist .Fields true true }}) ({{ if not .Ind
 	{{ end -}}
 	}
 
-	err = db.QueryRow(sqlstr{{ goparamlist .Fields true false }}).Scan({{ fieldnames .Type.Fields (print "&" $short) }})
+	err = db.QueryRowContext(ctx, sqlstr{{ goparamlist .Fields true false }}).Scan({{ fieldnames .Type.Fields (print "&" $short) }})
 	if err != nil {
 		return nil, err
 	}
 
 	return &{{ $short }}, nil
 {{- else }}
-	q, err := db.Query(sqlstr{{ goparamlist .Fields true false }})
+	q, err := db.QueryContext(ctx, sqlstr{{ goparamlist .Fields true false }})
 	if err != nil {
 		return nil, err
 	}

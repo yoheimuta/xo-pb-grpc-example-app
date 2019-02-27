@@ -28,7 +28,7 @@ func ({{ $short }} *{{ .Name }}) Deleted() bool {
 }
 
 // Insert inserts the {{ .Name }} to the database.
-func ({{ $short }} *{{ .Name }}) Insert(db XODB) error {
+func ({{ $short }} *{{ .Name }}) Insert(ctx context.Context, db XODB) error {
 	var err error
 
 	// if already exist, bail
@@ -47,7 +47,7 @@ func ({{ $short }} *{{ .Name }}) Insert(db XODB) error {
 
 	// run query
 	XOLog(sqlstr, {{ fieldnames .Fields $short }})
-	_, err = db.Exec(sqlstr, {{ fieldnames .Fields $short }})
+	_, err = db.ExecContext(ctx, sqlstr, {{ fieldnames .Fields $short }})
 	if err != nil {
 		return err
 	}
@@ -64,7 +64,7 @@ func ({{ $short }} *{{ .Name }}) Insert(db XODB) error {
 
 	// run query
 	XOLog(sqlstr, {{ fieldnames .Fields $short .PrimaryKey.Name }})
-	res, err := db.Exec(sqlstr, {{ fieldnames .Fields $short .PrimaryKey.Name }})
+	res, err := db.ExecContext(ctx, sqlstr, {{ fieldnames .Fields $short .PrimaryKey.Name }})
 	if err != nil {
 		return err
 	}
@@ -85,7 +85,7 @@ func ({{ $short }} *{{ .Name }}) Insert(db XODB) error {
 
 {{ if ne (fieldnamesmulti .Fields $short .PrimaryKeyFields) "" }}
 	// Update updates the {{ .Name }} in the database.
-	func ({{ $short }} *{{ .Name }}) Update(db XODB) error {
+	func ({{ $short }} *{{ .Name }}) Update(ctx context.Context, db XODB) error {
 		var err error
 
 		// if doesn't exist, bail
@@ -106,7 +106,7 @@ func ({{ $short }} *{{ .Name }}) Insert(db XODB) error {
 
 			// run query
 			XOLog(sqlstr, {{ fieldnamesmulti .Fields $short .PrimaryKeyFields }}, {{ fieldnames .PrimaryKeyFields $short}})
-			_, err = db.Exec(sqlstr, {{ fieldnamesmulti .Fields $short .PrimaryKeyFields }}, {{ fieldnames .PrimaryKeyFields $short}})
+			_, err = db.ExecContext(ctx, sqlstr, {{ fieldnamesmulti .Fields $short .PrimaryKeyFields }}, {{ fieldnames .PrimaryKeyFields $short}})
 			return err
 		{{- else }}
 			// sql query
@@ -116,25 +116,25 @@ func ({{ $short }} *{{ .Name }}) Insert(db XODB) error {
 
 			// run query
 			XOLog(sqlstr, {{ fieldnames .Fields $short .PrimaryKey.Name }}, {{ $short }}.{{ .PrimaryKey.Name }})
-			_, err = db.Exec(sqlstr, {{ fieldnames .Fields $short .PrimaryKey.Name }}, {{ $short }}.{{ .PrimaryKey.Name }})
+			_, err = db.ExecContext(ctx, sqlstr, {{ fieldnames .Fields $short .PrimaryKey.Name }}, {{ $short }}.{{ .PrimaryKey.Name }})
 			return err
 		{{- end }}
 	}
 
 	// Save saves the {{ .Name }} to the database.
-	func ({{ $short }} *{{ .Name }}) Save(db XODB) error {
+	func ({{ $short }} *{{ .Name }}) Save(ctx context.Context, db XODB) error {
 		if {{ $short }}.Exists() {
-			return {{ $short }}.Update(db)
+			return {{ $short }}.Update(ctx, db)
 		}
 
-		return {{ $short }}.Insert(db)
+		return {{ $short }}.Insert(ctx, db)
 	}
 {{ else }}
 	// Update statements omitted due to lack of fields other than primary key
 {{ end }}
 
 // Delete deletes the {{ .Name }} from the database.
-func ({{ $short }} *{{ .Name }}) Delete(db XODB) error {
+func ({{ $short }} *{{ .Name }}) Delete(ctx context.Context, db XODB) error {
 	var err error
 
 	// if doesn't exist, bail
@@ -153,7 +153,7 @@ func ({{ $short }} *{{ .Name }}) Delete(db XODB) error {
 
 		// run query
 		XOLog(sqlstr, {{ fieldnames .PrimaryKeyFields $short }})
-		_, err = db.Exec(sqlstr, {{ fieldnames .PrimaryKeyFields $short }})
+		_, err = db.ExecContext(ctx, sqlstr, {{ fieldnames .PrimaryKeyFields $short }})
 		if err != nil {
 			return err
 		}
@@ -163,7 +163,7 @@ func ({{ $short }} *{{ .Name }}) Delete(db XODB) error {
 
 		// run query
 		XOLog(sqlstr, {{ $short }}.{{ .PrimaryKey.Name }})
-		_, err = db.Exec(sqlstr, {{ $short }}.{{ .PrimaryKey.Name }})
+		_, err = db.ExecContext(ctx, sqlstr, {{ $short }}.{{ .PrimaryKey.Name }})
 		if err != nil {
 			return err
 		}

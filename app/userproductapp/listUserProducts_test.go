@@ -5,11 +5,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/yoheimuta/xo-example-app/infra/expmysql/expmodels"
-
 	"github.com/yoheimuta/xo-example-app/app/userproductapp"
-
 	"github.com/yoheimuta/xo-example-app/infra/expdep_test"
+	"github.com/yoheimuta/xo-example-app/infra/expmysql/expmodels"
 )
 
 func TestApp_ListUserProducts(t *testing.T) {
@@ -83,7 +81,8 @@ func prepareListUserProducts(
 		CreatedAt: now,
 		UpdatedAt: now,
 	}
-	err := user.Insert(dep.RawDB())
+	ctx := context.Background()
+	err := user.Insert(ctx, dep.RawDB())
 	if err != nil {
 		return nil, err
 	}
@@ -107,7 +106,7 @@ func prepareListUserProducts(
 		},
 	}
 	for _, p := range userProducts {
-		err = p.Insert(dep.RawDB())
+		err = p.Insert(ctx, dep.RawDB())
 		if err != nil {
 			return nil, err
 		}

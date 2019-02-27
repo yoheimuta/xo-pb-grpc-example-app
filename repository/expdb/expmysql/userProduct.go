@@ -8,8 +8,8 @@ import (
 
 // ListUserProductsByUserID gets a list of user's products using a userID.
 func (c *Client) ListUserProductsByUserID(
-	_ context.Context,
+	ctx context.Context,
 	userID string,
 ) ([]*expmodels.UserProduct, error) {
-	return expmodels.UserProductsByUserID(c.db, userID)
+	return expmodels.UserProductsByUserID(ctx, c.db, userID)
 }
