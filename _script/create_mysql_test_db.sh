@@ -19,6 +19,7 @@ HOST=$4
 SCHEMA_PATH=/tmp/"schema_$DATABASE.sql"
 
 cp _sql/mysql/schema.sql "$SCHEMA_PATH"
-sed -i "" -e"s/test-xo-db/$DATABASE/g" "$SCHEMA_PATH"
+sed -i.bak  -e"s/test-xo-db/$DATABASE/g" "$SCHEMA_PATH"
 mysql -u"$USER" -p"$PASSWORD" -h "$HOST" < "$SCHEMA_PATH"
 rm "$SCHEMA_PATH"
+rm "$SCHEMA_PATH.bak"
