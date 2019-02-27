@@ -2,6 +2,7 @@ package userapp
 
 import (
 	"context"
+	"time"
 
 	"github.com/yoheimuta/xo-example-app/infra/expmysql/expmodels"
 )
@@ -16,16 +17,25 @@ type DBRepository interface {
 	) error
 }
 
+// Clock represents a source of current time.
+type Clock interface {
+	// Now returns a current time.
+	Now() time.Time
+}
+
 // App represents an application managing a user's account.
 type App struct {
-	db DBRepository
+	db    DBRepository
+	clock Clock
 }
 
 // NewApp creates a new App.
 func NewApp(
 	db DBRepository,
+	clock Clock,
 ) *App {
 	return &App{
-		db: db,
+		db:    db,
+		clock: clock,
 	}
 }

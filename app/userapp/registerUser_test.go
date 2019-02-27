@@ -4,11 +4,9 @@ import (
 	"context"
 	"reflect"
 	"testing"
-	"time"
-
-	"github.com/yoheimuta/xo-example-app/infra/expmysql/expmodels"
 
 	"github.com/yoheimuta/xo-example-app/app/userapp"
+	"github.com/yoheimuta/xo-example-app/infra/expmysql/expmodels"
 
 	"github.com/yoheimuta/xo-example-app/infra/expdep_test"
 )
@@ -24,7 +22,7 @@ func TestApp_RegisterUser(t *testing.T) {
 	defer dep.Close()
 
 	userID := "UUIDv4"
-	now := time.Now().UTC().Truncate(time.Second)
+	now := dep.Now()
 
 	for _, test := range []struct {
 		name string

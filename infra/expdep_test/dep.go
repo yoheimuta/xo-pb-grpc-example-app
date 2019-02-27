@@ -2,6 +2,9 @@ package expdep_test
 
 import (
 	"database/sql"
+	"time"
+
+	"github.com/yoheimuta/xo-example-app/infra/exptime"
 
 	"github.com/yoheimuta/xo-example-app/app/userapp"
 	"github.com/yoheimuta/xo-example-app/infra/expmysql/expfixture_test"
@@ -11,6 +14,7 @@ import (
 // Dep represents dependencies used from tests.
 type Dep struct {
 	dbDataSource *expfixture_test.DataSource
+	clock        *exptime.Clock
 	userApp      *userapp.App
 }
 
@@ -30,12 +34,16 @@ func NewDep() (*Dep, error) {
 		return nil, err
 	}
 
+	clock := exptime.NewClock()
+
 	userApp := userapp.NewApp(
 		db,
+		clock,
 	)
 
 	return &Dep{
 		dbDataSource: dataSource,
+		clock:        clock,
 		userApp:      userApp,
 	}, nil
 }
@@ -48,6 +56,11 @@ func (d *Dep) Close() {
 // OpenRawDB opens a new database connection.
 func (d *Dep) OpenRawDB() (*sql.DB, error) {
 	return d.dbDataSource.OpenDB()
+}
+
+// Now returns a current time.
+func (d *Dep) Now() time.Time {
+	return d.clock.Now()
 }
 
 // UserApp returns an user application.
