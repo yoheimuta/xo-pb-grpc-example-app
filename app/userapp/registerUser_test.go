@@ -25,12 +25,12 @@ func TestApp_RegisterUser(t *testing.T) {
 	now := dep.Now()
 
 	for _, test := range []struct {
-		name string
-		req  *userapp.RegisterUserRequest
+		name     string
+		inputReq *userapp.RegisterUserRequest
 	}{
 		{
 			name: "Register a user",
-			req: &userapp.RegisterUserRequest{
+			inputReq: &userapp.RegisterUserRequest{
 				User: &expmodels.User{
 					UserID:    userID,
 					CreatedAt: now,
@@ -50,7 +50,7 @@ func TestApp_RegisterUser(t *testing.T) {
 		t.Run(test.name, func(t *testing.T) {
 			err := dep.UserApp().RegisterUser(
 				context.Background(),
-				test.req,
+				test.inputReq,
 			)
 			if err != nil {
 				t.Errorf("got err %v", err)
@@ -66,20 +66,20 @@ func TestApp_RegisterUser(t *testing.T) {
 				_ = db.Close()
 			}()
 
-			gotUser, err := expmodels.UserByUserID(db, test.req.User.UserID)
+			gotUser, err := expmodels.UserByUserID(db, test.inputReq.User.UserID)
 			if err != nil {
 				t.Errorf("got err %v", err)
 			}
-			if !reflect.DeepEqual(gotUser, test.req.User) {
-				t.Errorf("got %v, but want %v", gotUser, test.req.User)
+			if !reflect.DeepEqual(gotUser, test.inputReq.User) {
+				t.Errorf("got %v, but want %v", gotUser, test.inputReq.User)
 			}
 
-			gotAuth, err := expmodels.UserAuthByUserID(db, test.req.User.UserID)
+			gotAuth, err := expmodels.UserAuthByUserID(db, test.inputReq.User.UserID)
 			if err != nil {
 				t.Errorf("got err %v", err)
 			}
-			if !reflect.DeepEqual(gotAuth, test.req.Auth) {
-				t.Errorf("got %v, but want %v", gotAuth, test.req.Auth)
+			if !reflect.DeepEqual(gotAuth, test.inputReq.Auth) {
+				t.Errorf("got %v, but want %v", gotAuth, test.inputReq.Auth)
 			}
 		})
 	}

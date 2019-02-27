@@ -4,6 +4,8 @@ import (
 	"database/sql"
 	"time"
 
+	"github.com/yoheimuta/xo-example-app/app/userproductapp"
+
 	"github.com/yoheimuta/xo-example-app/infra/exptime"
 
 	"github.com/yoheimuta/xo-example-app/app/userapp"
@@ -13,9 +15,10 @@ import (
 
 // Dep represents dependencies used from tests.
 type Dep struct {
-	dbDataSource *expfixture_test.DataSource
-	clock        *exptime.Clock
-	userApp      *userapp.App
+	dbDataSource   *expfixture_test.DataSource
+	clock          *exptime.Clock
+	userApp        *userapp.App
+	userProductApp *userproductapp.App
 }
 
 // NewDep creates a new Dep.
@@ -40,11 +43,15 @@ func NewDep() (*Dep, error) {
 		db,
 		clock,
 	)
+	userProductApp := userproductapp.NewApp(
+		db,
+	)
 
 	return &Dep{
-		dbDataSource: dataSource,
-		clock:        clock,
-		userApp:      userApp,
+		dbDataSource:   dataSource,
+		clock:          clock,
+		userApp:        userApp,
+		userProductApp: userProductApp,
 	}, nil
 }
 
@@ -66,4 +73,9 @@ func (d *Dep) Now() time.Time {
 // UserApp returns an user application.
 func (d *Dep) UserApp() *userapp.App {
 	return d.userApp
+}
+
+// UserProductApp returns an userProduct application.
+func (d *Dep) UserProductApp() *userproductapp.App {
+	return d.userProductApp
 }
