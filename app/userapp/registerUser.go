@@ -9,7 +9,7 @@ func (a *App) RegisterUser(
 ) error {
 	return a.db.RegisterUser(
 		ctx,
-		req.user,
-		req.auth,
+		req.User,
+		req.Auth,
 	)
 }
