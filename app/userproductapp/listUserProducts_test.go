@@ -20,7 +20,7 @@ func TestApp_ListUserProducts(t *testing.T) {
 		t.Errorf(err.Error())
 		return
 	}
-	defer dep.Close()
+	defer dep.Close(t)
 
 	userID := "testUserID"
 	prepared, err := prepareListUserProducts(
@@ -77,24 +77,13 @@ func prepareListUserProducts(
 	[]*expmodels.UserProduct,
 	error,
 ) {
-	db, err := dep.OpenRawDB()
-	if err != nil {
-		return nil, err
-	}
-	defer func() {
-		err2 := db.Close()
-		if err2 != nil {
-			panic(err2)
-		}
-	}()
-
 	now := dep.Now()
 	user := &expmodels.User{
 		UserID:    userID,
 		CreatedAt: now,
 		UpdatedAt: now,
 	}
-	err = user.Insert(db)
+	err := user.Insert(dep.RawDB())
 	if err != nil {
 		return nil, err
 	}
@@ -118,7 +107,7 @@ func prepareListUserProducts(
 		},
 	}
 	for _, p := range userProducts {
-		err = p.Insert(db)
+		err = p.Insert(dep.RawDB())
 		if err != nil {
 			return nil, err
 		}

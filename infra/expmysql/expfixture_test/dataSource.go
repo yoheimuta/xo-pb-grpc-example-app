@@ -48,7 +48,7 @@ func (d DataSource) Setup() (string, error) {
 		d.host,
 	).CombinedOutput()
 	if err != nil {
-		return "", fmt.Errorf("err=%v, output=%v", err, out)
+		return "", fmt.Errorf("err=%v, output=%v", err, string(out))
 	}
 	return d.dataSourceName(), nil
 }

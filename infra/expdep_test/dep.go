@@ -2,6 +2,7 @@ package expdep_test
 
 import (
 	"database/sql"
+	"testing"
 	"time"
 
 	"github.com/yoheimuta/xo-example-app/app/userproductapp"
@@ -19,6 +20,8 @@ type Dep struct {
 	clock          *exptime.Clock
 	userApp        *userapp.App
 	userProductApp *userproductapp.App
+
+	rawDB *sql.DB
 }
 
 // NewDep creates a new Dep.
@@ -47,22 +50,32 @@ func NewDep() (*Dep, error) {
 		db,
 	)
 
+	rawDB, err := dataSource.OpenDB()
+	if err != nil {
+		return nil, err
+	}
+
 	return &Dep{
 		dbDataSource:   dataSource,
 		clock:          clock,
 		userApp:        userApp,
 		userProductApp: userProductApp,
+		rawDB:          rawDB,
 	}, nil
 }
 
 // Close destroys some dependencies.
-func (d *Dep) Close() {
+func (d *Dep) Close(t *testing.T) {
 	d.dbDataSource.Close()
+	err := d.rawDB.Close()
+	if err != nil {
+		t.Errorf("failed rawDB.Close(), err=%v", err)
+	}
 }
 
-// OpenRawDB opens a new database connection.
-func (d *Dep) OpenRawDB() (*sql.DB, error) {
-	return d.dbDataSource.OpenDB()
+// RawDB returns a raw database connection.
+func (d *Dep) RawDB() *sql.DB {
+	return d.rawDB
 }
 
 // Now returns a current time.

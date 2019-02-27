@@ -19,7 +19,7 @@ func TestApp_RegisterUser(t *testing.T) {
 		t.Errorf(err.Error())
 		return
 	}
-	defer dep.Close()
+	defer dep.Close(t)
 
 	userID := "UUIDv4"
 	now := dep.Now()
@@ -57,16 +57,7 @@ func TestApp_RegisterUser(t *testing.T) {
 				return
 			}
 
-			db, err := dep.OpenRawDB()
-			if err != nil {
-				t.Errorf("got err %v", err)
-				return
-			}
-			defer func() {
-				_ = db.Close()
-			}()
-
-			gotUser, err := expmodels.UserByUserID(db, test.inputReq.User.UserID)
+			gotUser, err := expmodels.UserByUserID(dep.RawDB(), test.inputReq.User.UserID)
 			if err != nil {
 				t.Errorf("got err %v", err)
 			}
@@ -74,7 +65,7 @@ func TestApp_RegisterUser(t *testing.T) {
 				t.Errorf("got %v, but want %v", gotUser, test.inputReq.User)
 			}
 
-			gotAuth, err := expmodels.UserAuthByUserID(db, test.inputReq.User.UserID)
+			gotAuth, err := expmodels.UserAuthByUserID(dep.RawDB(), test.inputReq.User.UserID)
 			if err != nil {
 				t.Errorf("got err %v", err)
 			}

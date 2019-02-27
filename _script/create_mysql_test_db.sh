@@ -16,7 +16,7 @@ PASSWORD=$3
 # HOST is a mysql server host.
 HOST=$4
 # SCHEMA_PATH is a new path for schema.sql.
-SCHEMA_PATH=/tmp/schema.sql
+SCHEMA_PATH=/tmp/"schema_$DATABASE.sql"
 
 cp _sql/mysql/schema.sql "$SCHEMA_PATH"
 sed -i "" -e"s/test-xo-db/$DATABASE/g" "$SCHEMA_PATH"
