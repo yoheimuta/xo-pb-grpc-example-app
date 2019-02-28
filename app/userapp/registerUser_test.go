@@ -48,12 +48,16 @@ func TestApp_RegisterUser(t *testing.T) {
 	} {
 		test := test
 		t.Run(test.name, func(t *testing.T) {
-			err := dep.UserApp().RegisterUser(
+			tokenString, err := dep.UserApp().RegisterUser(
 				context.Background(),
 				test.inputReq,
 			)
 			if err != nil {
 				t.Errorf("got err %v", err)
+				return
+			}
+			if len(tokenString) == 0 {
+				t.Errorf("got len(tokenString)=0, but want more")
 				return
 			}
 

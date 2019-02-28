@@ -5,6 +5,8 @@ import (
 	"testing"
 	"time"
 
+	"github.com/yoheimuta/xo-pb-example-app/domain/authtoken"
+
 	"github.com/yoheimuta/xo-pb-example-app/app/userproductapp"
 
 	"github.com/yoheimuta/xo-pb-example-app/infra/exptime"
@@ -42,9 +44,15 @@ func NewDep() (*Dep, error) {
 
 	clock := exptime.NewClock()
 
+	authTokenGenerator, err := authtoken.NewGenerator([]byte("test"), time.Minute)
+	if err != nil {
+		return nil, err
+	}
+
 	userApp := userapp.NewApp(
 		db,
 		clock,
+		authTokenGenerator,
 	)
 	userProductApp := userproductapp.NewApp(
 		db,

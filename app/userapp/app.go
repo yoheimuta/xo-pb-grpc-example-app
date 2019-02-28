@@ -4,6 +4,8 @@ import (
 	"context"
 	"time"
 
+	"github.com/yoheimuta/xo-pb-example-app/domain/authtoken"
+
 	"github.com/yoheimuta/xo-pb-example-app/infra/expmysql/expmodels"
 )
 
@@ -25,17 +27,20 @@ type Clock interface {
 
 // App represents an application managing a user's account.
 type App struct {
-	db    DBRepository
-	clock Clock
+	db                 DBRepository
+	clock              Clock
+	authTokenGenerator *authtoken.Generator
 }
 
 // NewApp creates a new App.
 func NewApp(
 	db DBRepository,
 	clock Clock,
+	authTokenGenerator *authtoken.Generator,
 ) *App {
 	return &App{
-		db:    db,
-		clock: clock,
+		db:                 db,
+		clock:              clock,
+		authTokenGenerator: authTokenGenerator,
 	}
 }
