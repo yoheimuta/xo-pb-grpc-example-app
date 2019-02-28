@@ -8,6 +8,12 @@
   version = "v1.4.1"
 
 [[projects]]
+  name = "github.com/golang/protobuf"
+  packages = ["proto"]
+  revision = "c823c79ea1570fb5ff454033735a8e68575d1d0f"
+  version = "v1.3.0"
+
+[[projects]]
   name = "google.golang.org/appengine"
   packages = ["cloudsql"]
   revision = "e9657d882bb81064595ca3b56cbe2546bbabf7b1"
@@ -16,6 +22,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "bbf6179d42ade2863b20e3d15a2d78c0cc9168f2cfbc5658dedd0584e9146a95"
+  inputs-digest = "bdc4ce1200964a6333119adf908028d98c00e833b7f3f5bf2e6b3f5f062f7f1d"
   solver-name = "gps-cdcl"
   solver-version = 1
