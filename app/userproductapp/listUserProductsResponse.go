@@ -11,16 +11,16 @@ type ListUserProductsResponse struct {
 }
 
 // ToListUserProductResponsePB converts to a ListUserProductResponse pb.
-func (r *ListUserProductsResponse) ToListUserProductResponsePB() *userproductpb.ListUserProductResponse {
-	var products []*userproductpb.ListUserProductResponse_Product
+func (r *ListUserProductsResponse) ToListUserProductResponsePB() *userproductpb.ListUserProductsResponse {
+	var products []*userproductpb.ListUserProductsResponse_Product
 	for _, p := range r.UserProducts {
-		products = append(products, &userproductpb.ListUserProductResponse_Product{
+		products = append(products, &userproductpb.ListUserProductsResponse_Product{
 			UserProductId: p.UserProductID,
 			Title:         p.Title,
 			Description:   p.Description,
 		})
 	}
-	return &userproductpb.ListUserProductResponse{
+	return &userproductpb.ListUserProductsResponse{
 		Products: products,
 	}
 }

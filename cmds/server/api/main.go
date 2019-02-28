@@ -7,6 +7,10 @@ import (
 	"os"
 	"time"
 
+	"github.com/yoheimuta/xo-pb-grpc-example-app/infra/expgenproto/userproductpb"
+
+	"github.com/yoheimuta/xo-pb-grpc-example-app/transport/grpc/services/userproductservice"
+
 	"google.golang.org/grpc"
 
 	"github.com/yoheimuta/xo-pb-grpc-example-app/app/userapp"
@@ -51,7 +55,7 @@ func do() error {
 		clock,
 		authTokenGenerator,
 	)
-	_ = userproductapp.NewApp(
+	userProductApp := userproductapp.NewApp(
 		db,
 	)
 	// }
@@ -60,11 +64,15 @@ func do() error {
 	userService := userservice.NewService(
 		userApp,
 	)
+	userProductService := userproductservice.NewService(
+		userProductApp,
+	)
 	// }
 
 	// Creates a gRPC server. {
 	grpcServer := grpc.NewServer()
 	userpb.RegisterUserServiceServer(grpcServer, userService)
+	userproductpb.RegisterUserProductServiceServer(grpcServer, userProductService)
 	// }
 
 	// Listens and serves requests. {

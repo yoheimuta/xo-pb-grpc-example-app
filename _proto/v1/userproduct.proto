@@ -4,12 +4,18 @@ package userproductpb;
 
 option go_package = "github.com/yoheimuta/xo-pb-grpc-example-app/infra/expgenproto/userproductpb";
 
-// ListUserProductRequest represents a request for the ListUserProduct method.
-message ListUserProductRequest {
+// UserProductService represents a service about user's products.
+service UserProductService {
+    // ListUserProducts registers an user.
+    rpc ListUserProducts(ListUserProductsRequest) returns (ListUserProductsResponse) {}
 }
 
-// ListUserProductResponse represents a response for the ListUserProduct method.
-message ListUserProductResponse {
+// ListUserProductsRequest represents a request for the ListUserProducts method.
+message ListUserProductsRequest {
+}
+
+// ListUserProductsResponse represents a response for the ListUserProducts method.
+message ListUserProductsResponse {
     // Product represents an user's product.
     message Product {
         // user_product_id represents a product id. This is UUID v4.

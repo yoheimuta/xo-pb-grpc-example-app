@@ -7,6 +7,11 @@ import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
 
+import (
+	context "golang.org/x/net/context"
+	grpc "google.golang.org/grpc"
+)
+
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
 var _ = fmt.Errorf
@@ -18,71 +23,71 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
-// ListUserProductRequest represents a request for the ListUserProduct method.
-type ListUserProductRequest struct {
+// ListUserProductsRequest represents a request for the ListUserProducts method.
+type ListUserProductsRequest struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ListUserProductRequest) Reset()         { *m = ListUserProductRequest{} }
-func (m *ListUserProductRequest) String() string { return proto.CompactTextString(m) }
-func (*ListUserProductRequest) ProtoMessage()    {}
-func (*ListUserProductRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_userproduct_0af195eec7d3f12d, []int{0}
+func (m *ListUserProductsRequest) Reset()         { *m = ListUserProductsRequest{} }
+func (m *ListUserProductsRequest) String() string { return proto.CompactTextString(m) }
+func (*ListUserProductsRequest) ProtoMessage()    {}
+func (*ListUserProductsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_userproduct_4060616d3fbacc00, []int{0}
 }
-func (m *ListUserProductRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ListUserProductRequest.Unmarshal(m, b)
+func (m *ListUserProductsRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ListUserProductsRequest.Unmarshal(m, b)
 }
-func (m *ListUserProductRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ListUserProductRequest.Marshal(b, m, deterministic)
+func (m *ListUserProductsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ListUserProductsRequest.Marshal(b, m, deterministic)
 }
-func (dst *ListUserProductRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListUserProductRequest.Merge(dst, src)
+func (dst *ListUserProductsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListUserProductsRequest.Merge(dst, src)
 }
-func (m *ListUserProductRequest) XXX_Size() int {
-	return xxx_messageInfo_ListUserProductRequest.Size(m)
+func (m *ListUserProductsRequest) XXX_Size() int {
+	return xxx_messageInfo_ListUserProductsRequest.Size(m)
 }
-func (m *ListUserProductRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_ListUserProductRequest.DiscardUnknown(m)
+func (m *ListUserProductsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListUserProductsRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_ListUserProductRequest proto.InternalMessageInfo
+var xxx_messageInfo_ListUserProductsRequest proto.InternalMessageInfo
 
-// ListUserProductResponse represents a response for the ListUserProduct method.
-type ListUserProductResponse struct {
+// ListUserProductsResponse represents a response for the ListUserProducts method.
+type ListUserProductsResponse struct {
 	// products represents a list of product.
-	Products             []*ListUserProductResponse_Product `protobuf:"bytes,1,rep,name=products,proto3" json:"products,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                           `json:"-"`
-	XXX_unrecognized     []byte                             `json:"-"`
-	XXX_sizecache        int32                              `json:"-"`
+	Products             []*ListUserProductsResponse_Product `protobuf:"bytes,1,rep,name=products,proto3" json:"products,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                            `json:"-"`
+	XXX_unrecognized     []byte                              `json:"-"`
+	XXX_sizecache        int32                               `json:"-"`
 }
 
-func (m *ListUserProductResponse) Reset()         { *m = ListUserProductResponse{} }
-func (m *ListUserProductResponse) String() string { return proto.CompactTextString(m) }
-func (*ListUserProductResponse) ProtoMessage()    {}
-func (*ListUserProductResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_userproduct_0af195eec7d3f12d, []int{1}
+func (m *ListUserProductsResponse) Reset()         { *m = ListUserProductsResponse{} }
+func (m *ListUserProductsResponse) String() string { return proto.CompactTextString(m) }
+func (*ListUserProductsResponse) ProtoMessage()    {}
+func (*ListUserProductsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_userproduct_4060616d3fbacc00, []int{1}
 }
-func (m *ListUserProductResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ListUserProductResponse.Unmarshal(m, b)
+func (m *ListUserProductsResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ListUserProductsResponse.Unmarshal(m, b)
 }
-func (m *ListUserProductResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ListUserProductResponse.Marshal(b, m, deterministic)
+func (m *ListUserProductsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ListUserProductsResponse.Marshal(b, m, deterministic)
 }
-func (dst *ListUserProductResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListUserProductResponse.Merge(dst, src)
+func (dst *ListUserProductsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListUserProductsResponse.Merge(dst, src)
 }
-func (m *ListUserProductResponse) XXX_Size() int {
-	return xxx_messageInfo_ListUserProductResponse.Size(m)
+func (m *ListUserProductsResponse) XXX_Size() int {
+	return xxx_messageInfo_ListUserProductsResponse.Size(m)
 }
-func (m *ListUserProductResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_ListUserProductResponse.DiscardUnknown(m)
+func (m *ListUserProductsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListUserProductsResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_ListUserProductResponse proto.InternalMessageInfo
+var xxx_messageInfo_ListUserProductsResponse proto.InternalMessageInfo
 
-func (m *ListUserProductResponse) GetProducts() []*ListUserProductResponse_Product {
+func (m *ListUserProductsResponse) GetProducts() []*ListUserProductsResponse_Product {
 	if m != nil {
 		return m.Products
 	}
@@ -90,7 +95,7 @@ func (m *ListUserProductResponse) GetProducts() []*ListUserProductResponse_Produ
 }
 
 // Product represents an user's product.
-type ListUserProductResponse_Product struct {
+type ListUserProductsResponse_Product struct {
 	// user_product_id represents a product id. This is UUID v4.
 	UserProductId string `protobuf:"bytes,1,opt,name=user_product_id,json=userProductId,proto3" json:"user_product_id,omitempty"`
 	// title represents a title.
@@ -102,45 +107,45 @@ type ListUserProductResponse_Product struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ListUserProductResponse_Product) Reset()         { *m = ListUserProductResponse_Product{} }
-func (m *ListUserProductResponse_Product) String() string { return proto.CompactTextString(m) }
-func (*ListUserProductResponse_Product) ProtoMessage()    {}
-func (*ListUserProductResponse_Product) Descriptor() ([]byte, []int) {
-	return fileDescriptor_userproduct_0af195eec7d3f12d, []int{1, 0}
+func (m *ListUserProductsResponse_Product) Reset()         { *m = ListUserProductsResponse_Product{} }
+func (m *ListUserProductsResponse_Product) String() string { return proto.CompactTextString(m) }
+func (*ListUserProductsResponse_Product) ProtoMessage()    {}
+func (*ListUserProductsResponse_Product) Descriptor() ([]byte, []int) {
+	return fileDescriptor_userproduct_4060616d3fbacc00, []int{1, 0}
 }
-func (m *ListUserProductResponse_Product) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ListUserProductResponse_Product.Unmarshal(m, b)
+func (m *ListUserProductsResponse_Product) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ListUserProductsResponse_Product.Unmarshal(m, b)
 }
-func (m *ListUserProductResponse_Product) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ListUserProductResponse_Product.Marshal(b, m, deterministic)
+func (m *ListUserProductsResponse_Product) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ListUserProductsResponse_Product.Marshal(b, m, deterministic)
 }
-func (dst *ListUserProductResponse_Product) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListUserProductResponse_Product.Merge(dst, src)
+func (dst *ListUserProductsResponse_Product) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListUserProductsResponse_Product.Merge(dst, src)
 }
-func (m *ListUserProductResponse_Product) XXX_Size() int {
-	return xxx_messageInfo_ListUserProductResponse_Product.Size(m)
+func (m *ListUserProductsResponse_Product) XXX_Size() int {
+	return xxx_messageInfo_ListUserProductsResponse_Product.Size(m)
 }
-func (m *ListUserProductResponse_Product) XXX_DiscardUnknown() {
-	xxx_messageInfo_ListUserProductResponse_Product.DiscardUnknown(m)
+func (m *ListUserProductsResponse_Product) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListUserProductsResponse_Product.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_ListUserProductResponse_Product proto.InternalMessageInfo
+var xxx_messageInfo_ListUserProductsResponse_Product proto.InternalMessageInfo
 
-func (m *ListUserProductResponse_Product) GetUserProductId() string {
+func (m *ListUserProductsResponse_Product) GetUserProductId() string {
 	if m != nil {
 		return m.UserProductId
 	}
 	return ""
 }
 
-func (m *ListUserProductResponse_Product) GetTitle() string {
+func (m *ListUserProductsResponse_Product) GetTitle() string {
 	if m != nil {
 		return m.Title
 	}
 	return ""
 }
 
-func (m *ListUserProductResponse_Product) GetDescription() string {
+func (m *ListUserProductsResponse_Product) GetDescription() string {
 	if m != nil {
 		return m.Description
 	}
@@ -148,29 +153,105 @@ func (m *ListUserProductResponse_Product) GetDescription() string {
 }
 
 func init() {
-	proto.RegisterType((*ListUserProductRequest)(nil), "userproductpb.ListUserProductRequest")
-	proto.RegisterType((*ListUserProductResponse)(nil), "userproductpb.ListUserProductResponse")
-	proto.RegisterType((*ListUserProductResponse_Product)(nil), "userproductpb.ListUserProductResponse.Product")
+	proto.RegisterType((*ListUserProductsRequest)(nil), "userproductpb.ListUserProductsRequest")
+	proto.RegisterType((*ListUserProductsResponse)(nil), "userproductpb.ListUserProductsResponse")
+	proto.RegisterType((*ListUserProductsResponse_Product)(nil), "userproductpb.ListUserProductsResponse.Product")
 }
 
-func init() { proto.RegisterFile("userproduct.proto", fileDescriptor_userproduct_0af195eec7d3f12d) }
+// Reference imports to suppress errors if they are not otherwise used.
+var _ context.Context
+var _ grpc.ClientConn
 
-var fileDescriptor_userproduct_0af195eec7d3f12d = []byte{
-	// 241 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x90, 0xcb, 0x4a, 0x03, 0x31,
-	0x14, 0x86, 0x19, 0x8b, 0xb7, 0x14, 0x11, 0x83, 0x68, 0x70, 0x35, 0x74, 0x21, 0xdd, 0x4c, 0x02,
-	0xfa, 0x06, 0xee, 0xbc, 0x81, 0x14, 0xdc, 0xb8, 0x29, 0x73, 0x39, 0x4e, 0x0f, 0x74, 0x26, 0xc7,
-	0xe4, 0x04, 0xc6, 0xb7, 0xf4, 0x91, 0xc4, 0x34, 0x4a, 0x07, 0xe9, 0xf2, 0xff, 0xbe, 0xfc, 0x3f,
-	0x49, 0xc4, 0x59, 0xf0, 0xe0, 0xc8, 0xd9, 0x26, 0xd4, 0xac, 0xc9, 0x59, 0xb6, 0xf2, 0x64, 0x0b,
-	0x51, 0x35, 0x53, 0xe2, 0xe2, 0x09, 0x3d, 0xbf, 0x7a, 0x70, 0x2f, 0x1b, 0xb8, 0x80, 0x8f, 0x00,
-	0x9e, 0x67, 0x5f, 0x99, 0xb8, 0xfc, 0xa7, 0x3c, 0xd9, 0xde, 0x83, 0x7c, 0x10, 0x47, 0x69, 0xc2,
-	0xab, 0x2c, 0x9f, 0xcc, 0xa7, 0x37, 0x5a, 0x8f, 0x76, 0xf5, 0x8e, 0xa6, 0xfe, 0xcd, 0x7f, 0xfd,
-	0x2b, 0x14, 0x87, 0x09, 0xca, 0x6b, 0x71, 0xfa, 0xb3, 0xb2, 0x4c, 0x6e, 0x89, 0x8d, 0xca, 0xf2,
-	0x6c, 0x7e, 0xbc, 0x88, 0x97, 0x4e, 0xa7, 0xee, 0x1b, 0x79, 0x2e, 0xf6, 0x19, 0x79, 0x0d, 0x6a,
-	0x2f, 0xda, 0x4d, 0x90, 0xb9, 0x98, 0x36, 0xe0, 0x6b, 0x87, 0xc4, 0x68, 0x7b, 0x35, 0x89, 0x6e,
-	0x1b, 0xdd, 0x3d, 0xbf, 0x3d, 0xb6, 0xc8, 0xab, 0x50, 0xe9, 0xda, 0x76, 0xe6, 0xd3, 0xae, 0x00,
-	0xbb, 0xc0, 0xa5, 0x19, 0x6c, 0x41, 0x55, 0xd1, 0x3a, 0xaa, 0x0b, 0x18, 0xca, 0x8e, 0xd6, 0x50,
-	0x94, 0x44, 0x06, 0xfb, 0x77, 0x57, 0x1a, 0x18, 0xa8, 0x85, 0x3e, 0x7e, 0x9e, 0x19, 0xbd, 0xb1,
-	0x3a, 0x88, 0xf0, 0xf6, 0x3b, 0x00, 0x00, 0xff, 0xff, 0x1d, 0xd7, 0xb6, 0x6d, 0x66, 0x01, 0x00,
-	0x00,
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion4
+
+// UserProductServiceClient is the client API for UserProductService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+type UserProductServiceClient interface {
+	// ListUserProducts registers an user.
+	ListUserProducts(ctx context.Context, in *ListUserProductsRequest, opts ...grpc.CallOption) (*ListUserProductsResponse, error)
+}
+
+type userProductServiceClient struct {
+	cc *grpc.ClientConn
+}
+
+func NewUserProductServiceClient(cc *grpc.ClientConn) UserProductServiceClient {
+	return &userProductServiceClient{cc}
+}
+
+func (c *userProductServiceClient) ListUserProducts(ctx context.Context, in *ListUserProductsRequest, opts ...grpc.CallOption) (*ListUserProductsResponse, error) {
+	out := new(ListUserProductsResponse)
+	err := c.cc.Invoke(ctx, "/userproductpb.UserProductService/ListUserProducts", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// UserProductServiceServer is the server API for UserProductService service.
+type UserProductServiceServer interface {
+	// ListUserProducts registers an user.
+	ListUserProducts(context.Context, *ListUserProductsRequest) (*ListUserProductsResponse, error)
+}
+
+func RegisterUserProductServiceServer(s *grpc.Server, srv UserProductServiceServer) {
+	s.RegisterService(&_UserProductService_serviceDesc, srv)
+}
+
+func _UserProductService_ListUserProducts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListUserProductsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserProductServiceServer).ListUserProducts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/userproductpb.UserProductService/ListUserProducts",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserProductServiceServer).ListUserProducts(ctx, req.(*ListUserProductsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _UserProductService_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "userproductpb.UserProductService",
+	HandlerType: (*UserProductServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "ListUserProducts",
+			Handler:    _UserProductService_ListUserProducts_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "userproduct.proto",
+}
+
+func init() { proto.RegisterFile("userproduct.proto", fileDescriptor_userproduct_4060616d3fbacc00) }
+
+var fileDescriptor_userproduct_4060616d3fbacc00 = []byte{
+	// 274 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x91, 0x5d, 0x4b, 0xc3, 0x30,
+	0x14, 0x86, 0xad, 0xc3, 0xaf, 0x33, 0x44, 0x0d, 0x82, 0x75, 0x57, 0xa3, 0x17, 0x73, 0x37, 0x6d,
+	0x60, 0xfe, 0x03, 0xef, 0x64, 0x0a, 0x52, 0xf1, 0xc6, 0x9b, 0xd1, 0x8f, 0x63, 0x77, 0x60, 0x6d,
+	0x8e, 0x49, 0x2a, 0x15, 0xff, 0xa5, 0xbf, 0x48, 0xcc, 0x82, 0x74, 0x8a, 0xe8, 0x65, 0x9e, 0x37,
+	0x79, 0xf2, 0x9e, 0x04, 0x4e, 0x5a, 0x83, 0x9a, 0xb5, 0x2a, 0xdb, 0xc2, 0x26, 0xac, 0x95, 0x55,
+	0xe2, 0xb0, 0x87, 0x38, 0x8f, 0xce, 0xe1, 0xec, 0x86, 0x8c, 0x7d, 0x30, 0xa8, 0xef, 0xd6, 0xd0,
+	0xa4, 0xf8, 0xdc, 0xa2, 0xb1, 0xd1, 0x7b, 0x00, 0xe1, 0xcf, 0xcc, 0xb0, 0x6a, 0x0c, 0x8a, 0x39,
+	0xec, 0x7b, 0x89, 0x09, 0x83, 0xf1, 0x60, 0x3a, 0x9c, 0xc9, 0x64, 0xc3, 0x9c, 0xfc, 0x76, 0x34,
+	0xf1, 0x20, 0xfd, 0x12, 0x8c, 0x08, 0xf6, 0x3c, 0x14, 0x13, 0x38, 0xfa, 0xd4, 0x2c, 0x7c, 0xb6,
+	0xa0, 0x32, 0x0c, 0xc6, 0xc1, 0xf4, 0x20, 0x75, 0xbd, 0xfd, 0xae, 0xeb, 0x52, 0x9c, 0xc2, 0x8e,
+	0x25, 0xbb, 0xc2, 0x70, 0xdb, 0xa5, 0xeb, 0x85, 0x18, 0xc3, 0xb0, 0x44, 0x53, 0x68, 0x62, 0x4b,
+	0xaa, 0x09, 0x07, 0x2e, 0xeb, 0xa3, 0xd9, 0x1b, 0x88, 0x5e, 0xa9, 0x7b, 0xd4, 0x2f, 0x54, 0xa0,
+	0x40, 0x38, 0xfe, 0x5e, 0x57, 0x4c, 0xfe, 0x9c, 0xc7, 0x3d, 0xd3, 0xe8, 0xe2, 0x9f, 0x73, 0x47,
+	0x5b, 0x57, 0xb7, 0x8f, 0xf3, 0x8a, 0xec, 0xb2, 0xcd, 0x93, 0x42, 0xd5, 0xf2, 0x55, 0x2d, 0x91,
+	0xea, 0xd6, 0x66, 0xb2, 0x53, 0x31, 0xe7, 0x71, 0xa5, 0xb9, 0x88, 0xb1, 0xcb, 0x6a, 0x5e, 0x61,
+	0x9c, 0x31, 0x4b, 0x6a, 0x9e, 0x74, 0x26, 0xb1, 0xe3, 0x0a, 0x1b, 0xf7, 0x79, 0x72, 0xe3, 0xa6,
+	0x7c, 0xd7, 0xc1, 0xcb, 0x8f, 0x00, 0x00, 0x00, 0xff, 0xff, 0x7a, 0x1d, 0xb3, 0xbd, 0xe6, 0x01,
+	0x00, 0x00,
 }
