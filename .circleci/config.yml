@@ -28,7 +28,7 @@ jobs:
       - run:
           name: Run tests
           command: |
-            make dev/test
+            make test/go
 workflows:
   version: 2
   lint_and_test:

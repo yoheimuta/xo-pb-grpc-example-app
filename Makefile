@@ -3,17 +3,13 @@
 # ------------------------------------------------------------------
 
 ## dev/test/all runs fmt, lint and test.
-dev/test/all:dev/fmt test/lint dev/test
+dev/test/all:dev/fmt test/lint test/go
 
 ## dev/fmt enforces a right code.
 dev/fmt:
 	goimports -w `find . -name vendor -prune -type f -o -name '*.go'`
 	gofmt -s -w `find . -name vendor -prune -type f -o -name '*.go'`
 	unconvert -apply ./...
-
-## dev/test runs a test.
-dev/test:
-	go test -v -p 8 -count 1 -timeout 240s -race ./...
 
 ## dev/install/dep installs dependencies.
 dev/install/dep:
@@ -49,6 +45,11 @@ test/lint:
 	varcheck ./...
 	ineffassign .
 	unconvert -v ./...
+
+## test/go runs Go testing.
+test/go:
+	go test -v -p 8 -count 1 -timeout 240s -race ./...
+
 
 # ------------------------------------------------------------------
 # ------------------------------------------------------------------
