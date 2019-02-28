@@ -1,5 +1,7 @@
 # xo-example-app
 
+[![CircleCI](https://circleci.com/gh/yoheimuta/xo-example-app/tree/master.svg?style=svg)](https://circleci.com/gh/yoheimuta/xo-example-app/tree/master)
+
 ## Setup
 
 Set the project root path to GOPATH.
@@ -36,4 +38,13 @@ Update generated model code.
 
 ```bash
 make dev/gen/xo
+```
+
+## Testing
+
+Runs fmt, lint and test.
+
+
+```
+make dev/test/all
 ```
