@@ -42,7 +42,7 @@ make dev/gen/xo
 
 ## Testing
 
-Runs fmt, lint and test.
+Run fmt, lint and test.
 
 
 ```
