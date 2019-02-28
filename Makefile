@@ -48,6 +48,7 @@ test/lint:
 	varcheck ./...
 	ineffassign .
 	unconvert -v ./...
+	protolint _proto/v1
 
 ## test/go runs Go testing.
 test/go:

@@ -14,12 +14,12 @@ message ListUserProductResponse {
     message Product {
         // user_product_id represents a product id. This is UUID v4.
         string user_product_id = 1;
-          // title represents a title.
+        // title represents a title.
         string title = 2;
         // description represents a description.
         string description = 3;
     }
 
     // products represents a list of product.
-    repeated Product Products = 1;
+    repeated Product products = 1;
 }

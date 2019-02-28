@@ -9,3 +9,4 @@ go get -u github.com/gordonklaus/ineffassign
 go get -u github.com/opennota/check/cmd/varcheck
 go get -u github.com/opennota/check/cmd/aligncheck
 go get -u github.com/mdempsky/unconvert
+go get -u github.com/yoheimuta/protolint/cmd/protolint
