@@ -34,6 +34,20 @@ Create a database and tables.
 mysql -uroot -p'my-pw' -h 0.0.0.0 < _sql/mysql/schema.sql
 ```
 
+## API Server
+
+Run an API Server.
+
+```bash
+go run github.com/yoheimuta/xo-pb-grpc-example-app/cmds/server/api
+```
+
+You can ping your API Server after running the server.
+
+```bash
+go run github.com/yoheimuta/xo-pb-grpc-example-app/cmds/devel/ping/api
+```
+
 ## Development
 
 Update generated model code.
