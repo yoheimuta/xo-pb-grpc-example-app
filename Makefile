@@ -26,6 +26,9 @@ dev/gen/xo:
 	    --template-path _xo/templates
 	sed -i "" -e"s/test-xo-db\.//g" infra/expmysql/expmodels/*
 
+dev/gen/proto:
+	./_proto/BUILD
+
 # ------------------------------------------------------------------
 # ------------------------------------------------------------------
 # }

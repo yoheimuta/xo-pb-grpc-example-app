@@ -20,6 +20,8 @@ Install a dependency.
 go get -u github.com/xo/xo
 ```
 
+- And get a protoc binary manually.
+
 Run your mysql.
 
 ```bash
@@ -38,6 +40,12 @@ Update generated model code.
 
 ```bash
 make dev/gen/xo
+```
+
+Update generated proto files.
+
+```bash
+make dev/gen/proto
 ```
 
 ## Testing
