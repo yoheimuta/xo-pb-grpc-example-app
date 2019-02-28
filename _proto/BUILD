@@ -10,6 +10,7 @@ dir=./v1
 
 filenames=(
     user
+    userproduct
 )
 
 for filename in ${filenames[@]};
