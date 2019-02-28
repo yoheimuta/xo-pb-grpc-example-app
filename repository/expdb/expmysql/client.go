@@ -3,7 +3,7 @@ package expmysql
 import (
 	"database/sql"
 
-	"github.com/yoheimuta/xo-example-app/infra/expsql"
+	"github.com/yoheimuta/xo-pb-example-app/infra/expsql"
 )
 
 // Client represents a MySQL client.

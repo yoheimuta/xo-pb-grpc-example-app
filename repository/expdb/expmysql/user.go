@@ -3,8 +3,8 @@ package expmysql
 import (
 	"context"
 
-	"github.com/yoheimuta/xo-example-app/infra/expmysql/expmodels"
-	"github.com/yoheimuta/xo-example-app/infra/expsql"
+	"github.com/yoheimuta/xo-pb-example-app/infra/expmysql/expmodels"
+	"github.com/yoheimuta/xo-pb-example-app/infra/expsql"
 )
 
 // RegisterUser registers a user.

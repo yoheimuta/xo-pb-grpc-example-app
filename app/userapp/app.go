@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/yoheimuta/xo-example-app/infra/expmysql/expmodels"
+	"github.com/yoheimuta/xo-pb-example-app/infra/expmysql/expmodels"
 )
 
 // DBRepository represents a DB repository.

@@ -5,10 +5,10 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/yoheimuta/xo-example-app/app/userapp"
-	"github.com/yoheimuta/xo-example-app/infra/expmysql/expmodels"
+	"github.com/yoheimuta/xo-pb-example-app/app/userapp"
+	"github.com/yoheimuta/xo-pb-example-app/infra/expmysql/expmodels"
 
-	"github.com/yoheimuta/xo-example-app/infra/expdep_test"
+	"github.com/yoheimuta/xo-pb-example-app/infra/expdep_test"
 )
 
 func TestApp_RegisterUser(t *testing.T) {
