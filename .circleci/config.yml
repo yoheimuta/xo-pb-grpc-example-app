@@ -3,7 +3,7 @@ jobs:
   lint:
     docker:
       - image: circleci/golang:1.11.4
-    working_directory: /go/src/github.com/yoheimuta/xo-pb-example-app
+    working_directory: /go/src/github.com/yoheimuta/xo-pb-grpc-example-app
     steps:
       - checkout
       - run: make dev/install/dep
@@ -15,7 +15,7 @@ jobs:
         environment:
           - MYSQL_ROOT_PASSWORD=my-pw
         command: mysqld --default-authentication-plugin=mysql_native_password
-    working_directory: /go/src/github.com/yoheimuta/xo-pb-example-app
+    working_directory: /go/src/github.com/yoheimuta/xo-pb-grpc-example-app
     steps:
       - checkout
       - run:

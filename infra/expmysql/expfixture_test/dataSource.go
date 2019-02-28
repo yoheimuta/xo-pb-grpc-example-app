@@ -7,7 +7,7 @@ import (
 	"os/exec"
 	"time"
 
-	"github.com/yoheimuta/xo-pb-example-app/infra/exppath_test"
+	"github.com/yoheimuta/xo-pb-grpc-example-app/infra/exppath_test"
 )
 
 func init() {

@@ -5,15 +5,15 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yoheimuta/xo-pb-example-app/domain/authtoken"
+	"github.com/yoheimuta/xo-pb-grpc-example-app/domain/authtoken"
 
-	"github.com/yoheimuta/xo-pb-example-app/app/userproductapp"
+	"github.com/yoheimuta/xo-pb-grpc-example-app/app/userproductapp"
 
-	"github.com/yoheimuta/xo-pb-example-app/infra/exptime"
+	"github.com/yoheimuta/xo-pb-grpc-example-app/infra/exptime"
 
-	"github.com/yoheimuta/xo-pb-example-app/app/userapp"
-	"github.com/yoheimuta/xo-pb-example-app/infra/expmysql/expfixture_test"
-	"github.com/yoheimuta/xo-pb-example-app/repository/expdb/expmysql"
+	"github.com/yoheimuta/xo-pb-grpc-example-app/app/userapp"
+	"github.com/yoheimuta/xo-pb-grpc-example-app/infra/expmysql/expfixture_test"
+	"github.com/yoheimuta/xo-pb-grpc-example-app/repository/expdb/expmysql"
 )
 
 // Dep represents dependencies used from tests.

@@ -5,9 +5,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/yoheimuta/xo-pb-example-app/app/userproductapp"
-	"github.com/yoheimuta/xo-pb-example-app/infra/expdep_test"
-	"github.com/yoheimuta/xo-pb-example-app/infra/expmysql/expmodels"
+	"github.com/yoheimuta/xo-pb-grpc-example-app/app/userproductapp"
+	"github.com/yoheimuta/xo-pb-grpc-example-app/infra/expdep_test"
+	"github.com/yoheimuta/xo-pb-grpc-example-app/infra/expmysql/expmodels"
 )
 
 func TestApp_ListUserProducts(t *testing.T) {

@@ -1,17 +1,17 @@
-# xo-pb-example-app
+# xo-pb-grpc-example-app
 
-[![CircleCI](https://circleci.com/gh/yoheimuta/xo-pb-example-app/tree/master.svg?style=svg)](https://circleci.com/gh/yoheimuta/xo-pb-example-app/tree/master)
+[![CircleCI](https://circleci.com/gh/yoheimuta/xo-pb-grpc-example-app/tree/master.svg?style=svg)](https://circleci.com/gh/yoheimuta/xo-pb-grpc-example-app/tree/master)
 
 ## Setup
 
 Set the project root path to GOPATH.
 
 ```bash
-mkdir xo-pb-example-app
-cd xo-pb-example-app
+mkdir xo-pb-grpc-example-app
+cd xo-pb-grpc-example-app
 export GOPATH=$(pwd)
-go get -d github.com/yoheimuta/xo-pb-example-app # ignore a `no Go files` error.
-cd src/github.com/yoheimuta/xo-pb-example-app
+go get -d github.com/yoheimuta/xo-pb-grpc-example-app # ignore a `no Go files` error.
+cd src/github.com/yoheimuta/xo-pb-grpc-example-app
 ```
 
 Install a dependency.

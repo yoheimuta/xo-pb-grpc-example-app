@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package userpb;
 
-option go_package = "github.com/yoheimuta/xo-pb-example-app/infra/expgenproto/userpb";
+option go_package = "github.com/yoheimuta/xo-pb-grpc-example-app/infra/expgenproto/userpb";
 
 // RegisterUserRequest represents a request for the RegisterUser method.
 message RegisterUserRequest {

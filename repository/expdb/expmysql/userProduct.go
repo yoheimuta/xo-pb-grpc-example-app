@@ -3,7 +3,7 @@ package expmysql
 import (
 	"context"
 
-	"github.com/yoheimuta/xo-pb-example-app/infra/expmysql/expmodels"
+	"github.com/yoheimuta/xo-pb-grpc-example-app/infra/expmysql/expmodels"
 )
 
 // ListUserProductsByUserID gets a list of user's products using a userID.

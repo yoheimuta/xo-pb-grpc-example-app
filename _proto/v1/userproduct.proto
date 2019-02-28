@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package userproductpb;
 
-option go_package = "github.com/yoheimuta/xo-pb-example-app/infra/expgenproto/userproductpb";
+option go_package = "github.com/yoheimuta/xo-pb-grpc-example-app/infra/expgenproto/userproductpb";
 
 // ListUserProductRequest represents a request for the ListUserProduct method.
 message ListUserProductRequest {
