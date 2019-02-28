@@ -17,6 +17,6 @@ for filename in ${filenames[@]};
 do
     protoc \
     -I ${dir} \
-    --go_out=../../../../ \
+    --go_out=plugins=grpc:../../../../ \
     ${dir}/${filename}.proto
 done

@@ -4,6 +4,12 @@ package userpb;
 
 option go_package = "github.com/yoheimuta/xo-pb-grpc-example-app/infra/expgenproto/userpb";
 
+// UserService represents a service about an user account.
+service UserService {
+    // RegisterUser registers an user.
+    rpc RegisterUser(RegisterUserRequest) returns (RegisterUserResponse) {}
+}
+
 // RegisterUserRequest represents a request for the RegisterUser method.
 message RegisterUserRequest {
     // user_id represents a user's id. This is UUID v4. Required.
